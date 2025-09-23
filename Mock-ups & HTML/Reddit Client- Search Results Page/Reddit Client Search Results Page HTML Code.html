@@ -1,0 +1,123 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Spline+Sans%3Awght%40400%3B500%3B700"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col bg-[#181311] dark group/design-root overflow-x-hidden"
+      style='font-family: "Spline Sans", "Noto Sans", sans-serif;'
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#3a2c27] px-10 py-3">
+          <div class="flex items-center gap-4 text-white">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor"></path>
+              </svg>
+            </div>
+            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Spark</h2>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="px-4 py-3">
+              <label class="flex flex-col min-w-40 h-12 w-full">
+                <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+                  <div
+                    class="text-[#bba39b] flex border-none bg-[#3a2c27] items-center justify-center pl-4 rounded-l-lg border-r-0"
+                    data-icon="MagnifyingGlass"
+                    data-size="24px"
+                    data-weight="regular"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <input
+                    placeholder="Search"
+                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border-none bg-[#3a2c27] focus:border-none h-full placeholder:text-[#bba39b] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
+                    value=""
+                  />
+                </div>
+              </label>
+            </div>
+            <div class="pb-3">
+              <div class="flex border-b border-[#55413a] px-4 gap-8">
+                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-white text-white pb-[13px] pt-4" href="#">
+                  <p class="text-white text-sm font-bold leading-normal tracking-[0.015em]">Posts</p>
+                </a>
+                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#bba39b] pb-[13px] pt-4" href="#">
+                  <p class="text-[#bba39b] text-sm font-bold leading-normal tracking-[0.015em]">Communities</p>
+                </a>
+                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#bba39b] pb-[13px] pt-4" href="#">
+                  <p class="text-[#bba39b] text-sm font-bold leading-normal tracking-[0.015em]">People</p>
+                </a>
+                <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#bba39b] pb-[13px] pt-4" href="#">
+                  <p class="text-[#bba39b] text-sm font-bold leading-normal tracking-[0.015em]">Images</p>
+                </a>
+              </div>
+            </div>
+            <h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Sort</h3>
+            <div class="flex gap-3 p-3 flex-wrap pr-4">
+              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#3a2c27] pl-4 pr-4">
+                <p class="text-white text-sm font-medium leading-normal">Relevance</p>
+              </div>
+              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#3a2c27] pl-4 pr-4">
+                <p class="text-white text-sm font-medium leading-normal">New</p>
+              </div>
+              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#3a2c27] pl-4 pr-4">
+                <p class="text-white text-sm font-medium leading-normal">Top</p>
+              </div>
+            </div>
+            <div class="flex gap-4 bg-[#181311] px-4 py-3">
+              <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB7f-Ht4sbOaYk-8mauwOp1yDNuaYHPN4D-B9yuYAF7inkTH8lg-ermK36Ibt5WhjcekYLqPg7NHuIgk8Kqjhm0tSMXozZEFu2gVLoGC3YmFZNwY26A-e5_wDtxt2gF_QB2uVGwMfEPLRAMoGfF9MzPSqBMvCvpg1g2QkUn-noVFcJ-Wt4v6OLLMNNDBFg0HSpsonv7_NQnG29zxXUCi65byMn1rwK-n605TeBrvKVkcGTb0bfESPZQd2xravFy_yJWz8n5WU3766U");'
+              ></div>
+              <div class="flex flex-1 flex-col justify-center">
+                <p class="text-white text-base font-medium leading-normal">Tech advancements in 2024</p>
+                <p class="text-[#bba39b] text-sm font-normal leading-normal">123 comments • 456 upvotes</p>
+                <p class="text-[#bba39b] text-sm font-normal leading-normal">r/technology • Posted by user123 • 2d</p>
+              </div>
+            </div>
+            <div class="flex gap-4 bg-[#181311] px-4 py-3">
+              <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDK7HseyPiTmCJiv85FWpFpq_jygolK4semIp3uPk4KEXdUhw8sFqSnRr_W_8xJTVM6FvkT2bTR0EGWaDqwkBRbxV9nEHs9y-daRcNLxqDTNwaMOK4YLSQ0jM_tdaGPZbMKdEycLkKi51_aMe6k25t0cYh0BJhAVR_LqAPUtBBkQu9D8XMKwsOFMNwCzf1OW1NsrElGYtzAg_2YEIszqbQhDuszEY-xuVFYkvrE9x_PFap3jg7rhDusdExRJjtKYUG6ubESXpbwRk0");'
+              ></div>
+              <div class="flex flex-1 flex-col justify-center">
+                <p class="text-white text-base font-medium leading-normal">New scientific discoveries</p>
+                <p class="text-[#bba39b] text-sm font-normal leading-normal">789 comments • 1011 upvotes</p>
+                <p class="text-[#bba39b] text-sm font-normal leading-normal">r/science • Posted by user456 • 1d</p>
+              </div>
+            </div>
+            <div class="flex gap-4 bg-[#181311] px-4 py-3">
+              <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-[70px]"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZBDBgrjUnv2zn_-cliQpBce94zSndek4Yr6Aq8-mhidG0Q7_7aKvtffurwm3s23Mc1ircDpGIhrFiXPk17wjx68Nhx8QKWaL9nFX0gg1k-jqtE6Ui8bxyohiWGgx8De25h4gtK43dHH4nAa4jU5FV5of49_r8swxDJbZ5TcsJiQbDgPeYd99cmP-o7CR776tnKNQGcG8pEx7mfQigWr2p1GXA5w8UmmmTFJ-LUuiwEc_hyXzfo65KqJneCuGdxzpMDcQAkUUtzPE");'
+              ></div>
+              <div class="flex flex-1 flex-col justify-center">
+                <p class="text-white text-base font-medium leading-normal">Breaking news today</p>
+                <p class="text-[#bba39b] text-sm font-normal leading-normal">1213 comments • 1415 upvotes</p>
+                <p class="text-[#bba39b] text-sm font-normal leading-normal">r/news • Posted by user789 • 3d</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
