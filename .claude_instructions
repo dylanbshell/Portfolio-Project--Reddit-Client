@@ -1,0 +1,46 @@
+# Claude Code Instructions for Reddit Clone Project
+
+## Project Overview
+This is a Reddit-style news reader application built with React and Redux for a coding bootcamp project.
+
+## Technology Stack
+- React 18
+- Redux Toolkit
+- Jest & React Testing Library for testing
+- Reddit API for data
+
+## Development Guidelines
+
+### Code Style
+- Use functional components with hooks
+- Follow Redux Toolkit patterns
+- Do not use Tailwind utility classes for styling
+- Write tests for all components
+
+### Key Requirements
+- Mobile responsive design
+- Search and filter functionality
+- Detailed post view (modal or route)
+- Users can read posts and comments
+- Users can not login to an account, comment, or vote
+- 90+ Lighthouse score
+- Unit and E2E tests
+
+### When Making Changes
+- Always run tests before committing
+- Follow component naming conventions (PascalCase)
+- Add PropTypes for all props
+- Update tests when adding features
+
+### Common Tasks
+- `npm start` - development server
+- `npm test` - run tests
+- `npm run build` - production build
+- `npm run lighthouse` - performance testing
+
+## Specific Instructions
+- Keep components small and focused (single responsibility)
+- Use Redux for global state (posts, user, search)
+- Use local state for UI-only state (modals, forms)
+- Follow accessibility best practices
+- Prioritize performance (lazy loading, memoization)
