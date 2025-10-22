@@ -1,300 +1,244 @@
 # Reddit Client
 
-A modern, responsive Reddit client built with React and Redux that allows users to browse, search, and interact with Reddit content in an intuitive interface.
+> A modern Reddit client built with React and Redux for browsing and searching Reddit content.
 
-## Live Demo
+[![React](https://img.shields.io/badge/React-18.x-61dafb?logo=react)](https://reactjs.org/)
+[![Redux](https://img.shields.io/badge/Redux-Toolkit-764abc?logo=redux)](https://redux-toolkit.js.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-[View Live Application](#) <!-- Add your deployed URL here -->
+[View Live Demo](#) · [Report Bug](#) · [Request Feature](#)
 
-## Project Overview
+---
 
-This project is a Reddit client that provides users with a clean, modern interface to browse Reddit content. Users can view trending posts, search for specific content, filter by categories, and view detailed post information including comments.
+## 📋 About
 
-## Technologies Used
+A bootcamp portfolio project demonstrating React and Redux best practices. Browse Reddit posts, search content, filter by communities, and view detailed posts with comments—all without requiring a Reddit account.
 
-### Frontend
-- **React** - Component-based UI library
-- **Redux** - State management
+### Key Features
+
+- 🏠 **Home Feed** - Browse trending posts from multiple subreddits
+- 🔍 **Search** - Find posts across all of Reddit
+- 🏷️ **Filter** - View posts from specific communities with sorting (Best, Hot, New, Top, Rising)
+- 💬 **Post Details** - Read full posts with nested comment threads
+- 📱 **Responsive** - Works seamlessly on mobile, tablet, and desktop
+- ⚡ **Fast** - Optimized performance with code splitting and lazy loading
+
+---
+
+## 📸 Screenshots
+
+### Home Screen
+![Home Screen](screenshots/home-screen.png)
+
+### Post Detail with Comments
+![Post Detail](screenshots/post-detail.png)
+
+### Filtered View
+![Filtered View](screenshots/filtered-view.png)
+
+### Search Results
+![Search Results](screenshots/search-results.png)
+
+---
+
+## 🛠️ Technologies
+
+- **React 18** - UI components with hooks
+- **Redux Toolkit** - State management
 - **React Router** - Client-side routing
-- **CSS3** - Styling and responsive design
-- **JavaScript ES6+** - Modern JavaScript features
+- **Tailwind CSS** - Utility-first styling
+- **Jest & React Testing Library** - Unit testing
+- **Cypress** - End-to-end testing
+- **Reddit JSON API** - Data source (no API key required)
 
-### Testing
-- **Jest** - Unit testing framework
-- **Enzyme** - React component testing utility
-- **Cypress/Playwright** - End-to-end testing
+---
 
-### Development Tools
-- **Create React App** - Project boilerplate
-- **Git** - Version control
-- **GitHub** - Code hosting and project management
-- **GitHub Actions** - CI/CD pipeline (optional)
-
-### APIs
-- **Reddit JSON API** - Data source for posts and comments
-
-## Wireframes
-
-### Home Feed View
-```
-+------------------+
-|    Header/Nav    |
-+------------------+
-| Sidebar | Feed   |
-|         |        |
-| - Home  | Post 1 |
-| - Pop   | Post 2 |
-| - Tech  | Post 3 |
-| - News  |   ...  |
-+------------------+
-```
-
-### Post Detail View
-```
-+------------------+
-|    Header/Nav    |
-+------------------+
-|   Post Content   |
-|                  |
-|   Voting Buttons |
-|                  |
-|    Comments      |
-|    - Comment 1   |
-|      - Reply     |
-|    - Comment 2   |
-+------------------+
-```
-
-### Search Results View
-```
-+------------------+
-|    Header/Nav    |
-+------------------+
-|   Search Bar     |
-| [Posts|Users|etc]|
-|                  |
-|   Result 1       |
-|   Result 2       |
-|   Result 3       |
-+------------------+
-```
-
-## Features
-
-### Core Features
-- [ ] **Initial Data View** - Users see trending posts when first visiting
-- [ ] **Search Functionality** - Users can search Reddit content using terms
-- [ ] **Category Filtering** - Filter posts by predefined categories (Technology, Gaming, Science, etc.)
-- [ ] **Detailed Post View** - Click on posts to see full content and comments
-- [ ] **Responsive Design** - Works on desktop, tablet, and mobile devices
-- [ ] **Cross-Browser Support** - Compatible with modern browsers
-- [ ] **Error Handling** - Users can recover from error states
-- [ ] **Cohesive Design System** - Consistent UI/UX throughout the app
-- [ ] **Smooth Animations** - Delightful transitions and micro-interactions
-
-### User Stories
-- As a user, I want to see popular Reddit posts when I first visit the site
-- As a user, I want to search for specific topics or keywords
-- As a user, I want to filter posts by different categories
-- As a user, I want to click on a post to see its full content and comments
-- As a user, I want the app to work well on my phone and computer
-- As a user, I want smooth animations that make the app feel polished
-- As a user, I want to be able to recover if something goes wrong
-
-## Project Structure
-
-```
-reddit-client/
-├── public/
-│   ├── index.html
-│   └── favicon.ico
-├── src/
-│   ├── components/
-│   │   ├── Header/
-│   │   ├── PostList/
-│   │   ├── PostDetail/
-│   │   ├── SearchBar/
-│   │   └── Sidebar/
-│   ├── pages/
-│   │   ├── Home/
-│   │   ├── Search/
-│   │   └── PostDetail/
-│   ├── redux/
-│   │   ├── store/
-│   │   ├── slices/
-│   │   └── actions/
-│   ├── services/
-│   │   └── redditAPI.js
-│   ├── utils/
-│   ├── styles/
-│   ├── App.js
-│   └── index.js
-├── tests/
-│   ├── components/
-│   └── e2e/
-├── README.md
-└── package.json
-```
-
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
+
+- Node.js v14+ and npm
 - Git
 
 ### Installation
 
-1. **Clone the repository**
+1. **Clone and install**
    ```bash
-   git clone https://github.com/yourusername/reddit-client.git
+   git clone https://github.com/dylanbshell/reddit-client.git
    cd reddit-client
-   ```
-
-2. **Install dependencies**
-   ```bash
    npm install
    ```
 
-3. **Start the development server**
+2. **Start development server**
    ```bash
    npm start
    ```
+   Opens at `http://localhost:3000`
 
-4. **Open your browser**
-   Navigate to `http://localhost:3000`
+3. **Run tests** (optional)
+   ```bash
+   npm test
+   ```
 
-### Available Scripts
+### Available Commands
 
-- `npm start` - Runs the app in development mode
-- `npm test` - Launches the test runner
-- `npm run build` - Builds the app for production
-- `npm run eject` - Ejects from Create React App (use with caution)
-
-## Testing
-
-### Unit Tests
-```bash
-npm test
-```
-Tests are written using Jest and Enzyme, covering:
-- Component rendering
-- User interactions
-- Redux state management
-- Utility functions
-
-### End-to-End Tests
-```bash
-npm run test:e2e
-```
-E2E tests cover:
-- User workflows
-- Cross-browser compatibility
-- Mobile responsiveness
-
-## Design System
-
-### Color Palette
-- **Primary Background**: `#181311` (Dark brown/black)
-- **Secondary Background**: `#3a2c27` (Medium brown)
-- **Accent Background**: `#55413a` (Light brown)
-- **Primary Text**: `#ffffff` (White)
-- **Secondary Text**: `#bba39b` (Light brown/beige)
-
-### Typography
-- **Primary Font**: Spline Sans
-- **Secondary Font**: Noto Sans
-- **Headings**: Bold, tracking tight
-- **Body**: Regular weight, normal leading
-
-### Components
-- **Cards**: Rounded corners, subtle shadows
-- **Buttons**: Smooth hover transitions
-- **Icons**: Consistent sizing and style
-- **Loading States**: Skeleton screens and spinners
-
-## Responsive Design
-
-The application is fully responsive with breakpoints for:
-- **Mobile**: < 768px
-- **Tablet**: 768px - 1024px  
-- **Desktop**: > 1024px
-
-## Performance
-
-### Lighthouse Scores Target
-- **Performance**: 90+ (excluding Reddit media assets)
-- **Accessibility**: 90+
-- **Best Practices**: 90+
-- **SEO**: 90+
-
-### Optimization Techniques
-- Code splitting and lazy loading
-- Image optimization and lazy loading
-- Efficient Redux state management
-- Memoization of expensive computations
-
-## Future Enhancements
-
-### Phase 2 Features
-- [ ] User authentication and personalized feeds
-- [ ] Upvote/downvote functionality
-- [ ] Comment posting and replies
-- [ ] Dark/light theme toggle
-- [ ] Offline reading capabilities
-- [ ] Advanced search filters
-
-### Phase 3 Features
-- [ ] Real-time notifications
-- [ ] User profiles and karma tracking
-- [ ] Subreddit creation tools
-- [ ] Advanced moderation features
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 Development Process
-
-### Project Management
-- **Tool**: GitHub Projects
-- **Methodology**: Agile/Scrum approach
-- **Sprint Duration**: 1-2 weeks
-
-### Git Workflow
-- `main` - Production-ready code
-- `develop` - Integration branch
-- `feature/*` - Feature development branches
-- `hotfix/*` - Critical bug fixes
-
-## Known Issues
-
-- [ ] Issue tracking will be maintained here
-- [ ] Performance with large datasets needs optimization
-- [ ] Mobile keyboard sometimes overlaps search input
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-
-##  Author
-
-**Your Name**
-- GitHub: [@dylanbshell](https://github.com/dylanbshell)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Portfolio: [yourportfolio.com](https://yourportfolio.com)
-
-## Acknowledgments
-
-- Reddit API for providing the data
-- Create React App for the project boilerplate
-- The React and Redux communities for excellent documentation
-- Bootcamp instructors and fellow students for support and feedback
+| Command | Description |
+|---------|-------------|
+| `npm start` | Development server |
+| `npm test` | Run tests in watch mode |
+| `npm run build` | Production build |
+| `npm run lint` | Check code quality |
 
 ---
 
-**Built with ❤️ as part of a web development bootcamp project**
+## 📁 Project Structure
+
+```
+reddit-client/
+├── src/
+│   ├── components/          # Reusable UI components
+│   │   ├── navigation/      # NavBar, SearchBar, HomeButton
+│   │   ├── posts/           # PostCard, ImagePostCard, TextPostCard
+│   │   ├── sidebar/         # Sidebar, CommunityButton
+│   │   ├── comments/        # CommentCard, CommentCardReply
+│   │   └── shared/          # Button, Spinner, ErrorMessage
+│   ├── pages/               # Route components
+│   │   ├── HomeScreen.jsx
+│   │   ├── FilteredView.jsx
+│   │   ├── PostDetailView.jsx
+│   │   └── SearchResults.jsx
+│   ├── features/            # Redux slices
+│   │   ├── posts/
+│   │   ├── search/
+│   │   ├── filter/
+│   │   └── currentPost/
+│   ├── services/            # API integration
+│   ├── styles/              # Design system (tokens, CSS)
+│   └── utils/               # Helper functions
+├── tests/
+│   ├── components/
+│   ├── integration/
+│   └── e2e/
+└── public/
+```
+
+---
+
+## 🎨 Design System
+
+### Colors
+```javascript
+Primary:    #FF4500  // Reddit orange
+Secondary:  #0079D3  // Reddit blue  
+Background: #DAE0E6  // Light gray
+Cards:      #FFFFFF  // White
+Text:       #1c1c1c  // Dark gray
+```
+
+### Spacing (8px grid)
+```javascript
+xs: 4px, sm: 8px, md: 16px, lg: 24px, xl: 32px, xxl: 48px
+```
+
+### Typography
+- System font stack for instant loading
+- Sizes: h1 (32px), h2 (24px), h3 (20px), body (16px), caption (14px)
+
+### Responsive Breakpoints
+- Mobile: < 768px
+- Tablet: 768px - 1024px
+- Desktop: > 1024px
+
+---
+
+## 🧪 Testing
+
+### Unit Tests (Jest + React Testing Library)
+```bash
+npm test              # Watch mode
+npm test -- --coverage  # Coverage report
+```
+
+Target coverage: 80%+ for statements, functions, and lines
+
+### End-to-End Tests (Cypress)
+```bash
+npm run cypress:open  # Interactive
+npm run cypress:run   # Headless
+```
+
+Tests cover:
+- Home feed loading
+- Search functionality
+- Post detail navigation
+- Community filtering
+- Error handling
+
+### Testing Strategy
+Following the Testing Trophy:
+1. Many integration tests (high value)
+2. Some unit tests (fast feedback)
+3. Few E2E tests (confidence)
+
+---
+
+## 🗺️ Roadmap
+
+### Phase 1: MVP ✅
+- [x] Home feed, search, filter, post details
+- [x] Responsive design
+- [x] Error handling
+- [x] Tests (unit + E2E)
+
+### Phase 2: Enhancements 🚧
+- [ ] Infinite scroll
+- [ ] Image lazy loading
+- [ ] Skeleton loading states
+- [ ] Advanced search filters
+- [ ] Sort preference persistence
+
+### Phase 3: Polish
+- [ ] Dark mode
+- [ ] Offline support (PWA)
+- [ ] Performance optimization
+- [ ] Accessibility improvements
+
+---
+
+## 🤝 Contributing
+
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+1. Fork the repo
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+---
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) for details.
+
+---
+
+## 👤 Contact
+
+**Dylan Shell**
+
+- GitHub: [@dylanbshell](https://github.com/dylanbshell)
+- LinkedIn: [linkedin.com/in/dylanbshell](https://linkedin.com/in/dylanbshell)
+- Portfolio: [yourportfolio.com](https://yourportfolio.com)
+
+**Project Link**: [github.com/dylanbshell/reddit-client](https://github.com/dylanbshell/reddit-client)
+
+---
+
+<div align="center">
+
+**Built with ❤️ as part of a web development bootcamp**
+
+⭐ Star this repo if it helped you learn!
+
+</div>
