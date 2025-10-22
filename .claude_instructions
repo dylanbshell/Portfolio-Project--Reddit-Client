@@ -14,7 +14,7 @@ This is a Reddit-style news reader application built with React and Redux for a 
 ### Code Style
 - Use functional components with hooks
 - Follow Redux Toolkit patterns
-- Do not use Tailwind utility classes for styling
+- Use Tailwind utility classes for styling
 - Write tests for all components
 
 ### Key Requirements

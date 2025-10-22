@@ -1,0 +1,418 @@
+# Claude Code Instructions for Reddit Clone Project
+
+## Project Overview
+This is a Reddit-style news reader application built with React and Redux for a coding bootcamp project.
+The app allows users to browse posts, search content, filter by communities, and view detailed post information with comments.
+
+## Technology Stack
+- React 18
+- Redux Toolkit
+- Jest & React Testing Library for testing
+- Reddit API for data
+- Tailwind CSS for styling
+
+---
+
+## Application Structure
+
+### Four Main Views
+1. **Home Screen** (`/` or `/home`)
+   - Main feed with mixed posts (image and text)
+   - Sidebar with community list
+   - Search bar in navigation
+
+2. **Filtered View** (`/r/:subreddit`)
+   - Posts filtered by selected community
+   - Sorting options: Best, Hot, New, Top, Rising
+   - Same sidebar, but with active community highlighted
+
+3. **Post Detail View** (`/post/:postId`)
+   - Individual post with full content
+   - Comments section with nested replies (2 levels)
+   - Breadcrumb back to community
+
+4. **Search Results** (`/search?q=:query`)
+   - Search results displayed as cards
+   - Filter tabs: Posts, Communities, People
+   - Sub-sorting: Relevance, New, Top
+
+**Why this matters:** Knowing all views upfront helps organize routes, components, and state management correctly.
+
+---
+
+## Component Naming Conventions
+
+### Follow These Patterns (from Figma layer tree):
+
+#### Navigation Components
+- `NavBar` - Top navigation container
+- `SearchBar` - Search input component
+- `HomeButton` - Reddit logo/link
+
+#### Post Components
+- `ImagePostCard` - Post with image thumbnail
+- `TextPostCard` - Text-only post
+- `PostCard` - Generic wrapper (if needed)
+
+#### Sidebar Components
+- `Sidebar` - Container for community list
+- `CommunityContainer` - Individual community item
+- `CommunityButton` - Clickable community name
+
+#### Post Detail Components
+- `PostDetailView` - Main container
+- `CommentCard` - Individual comment
+- `CommentCardReply` - Nested comment (level 2)
+- `VoteControls` - Upvote/downvote UI
+
+#### Shared Components
+- `UpvoteIcon`, `DownvoteIcon`, `CommentIcon` - SVG icons
+- `PostStats` - Combined vote/comment counts
+- `UserInfo` - Username and timestamp display
+
+**Why this matters:** Consistent naming makes your codebase readable and helps Claude generate components that match your design system.
+
+---
+
+## Redux State Structure
+
+### Required Slices:
+
+```javascript
+// postsSlice.js
+{
+  posts: [],           // Array of post objects
+  status: 'idle',      // 'idle' | 'loading' | 'succeeded' | 'failed'
+  error: null
+}
+
+// searchSlice.js
+{
+  query: '',           // Current search term
+  results: [],         // Search results
+  activeTab: 'posts',  // 'posts' | 'communities' | 'people'
+  sortBy: 'relevance'  // 'relevance' | 'new' | 'top'
+}
+
+// filterSlice.js
+{
+  activeSubreddit: null,  // Currently filtered community
+  sortOrder: 'best'       // 'best' | 'hot' | 'new' | 'top' | 'rising'
+}
+
+// currentPostSlice.js
+{
+  post: null,          // Currently viewed post
+  comments: [],        // Comments for current post
+  status: 'idle',
+  error: null
+}
+```
+
+**Why this matters:** Organizing state into slices prevents confusion and makes it easier to manage different parts of your app independently.
+
+---
+
+## Design System Guidelines
+
+### Extract Design Tokens from Figma
+
+Create a design tokens file with:
+
+```javascript
+// src/design-tokens.js
+export const colors = {
+  primary: '#FF4500',      // Reddit orange
+  secondary: '#0079D3',    // Reddit blue
+  background: '#DAE0E6',   // Light gray
+  cardBg: '#FFFFFF',
+  text: '#1c1c1c',
+  textSecondary: '#7c7c7c'
+};
+
+export const spacing = {
+  xs: '4px',
+  sm: '8px',
+  md: '16px',
+  lg: '24px',
+  xl: '32px'
+};
+
+export const typography = {
+  heading: {
+    size: '24px',
+    weight: '600'
+  },
+  body: {
+    size: '16px',
+    weight: '400'
+  },
+  caption: {
+    size: '14px',
+    weight: '400'
+  }
+};
+```
+
+### Using Tokens in Components
+
+**DO:**
+```jsx
+import { colors, spacing } from './design-tokens';
+
+const Button = styled.button`
+  background: ${colors.primary};
+  padding: ${spacing.md};
+`;
+```
+
+**DON'T:**
+```jsx
+const Button = styled.button`
+  background: #FF4500;    // Hardcoded!
+  padding: 16px;          // Hardcoded!
+`;
+```
+
+**Why this matters:** Design tokens ensure consistency across your entire app and make it easy to update colors/spacing in one place.
+
+---
+
+## Development Guidelines
+
+### Code Style
+- Use functional components with hooks
+- Follow Redux Toolkit patterns (createSlice, createAsyncThunk)
+- Use Tailwind utility classes for styling when possible
+- Write tests for all components
+
+### Component Structure
+- Keep components small and focused (single responsibility)
+- One component per file
+- Place in appropriate folders:
+  ```
+  src/
+  ├── components/
+  │   ├── navigation/
+  │   ├── posts/
+  │   ├── sidebar/
+  │   └── shared/
+  ├── features/
+  │   ├── posts/
+  │   ├── search/
+  │   └── comments/
+  └── pages/
+  ```
+
+### State Management Rules
+- **Redux for:** Posts data, search results, filters, current post
+- **Local state for:** Form inputs, modal visibility, hover states
+- Never duplicate data between Redux and local state
+
+### Accessibility Requirements
+- All buttons must have accessible labels
+- Images must have alt text
+- Maintain proper heading hierarchy (h1 → h2 → h3)
+- Ensure keyboard navigation works
+- Color contrast ratio must meet WCAG AA standards
+
+**Why this matters:** Good structure and accessibility make your project professional and easier to maintain.
+
+---
+
+## Key Requirements Checklist
+
+### Functionality
+- [x] Mobile responsive design
+- [x] Search functionality
+- [x] Filter by community (subreddit)
+- [x] Sorting options (Best, Hot, New, Top, Rising)
+- [x] Post detail view with comments
+- [x] Nested comments (up to 2 levels)
+- [x] Read-only (no login, posting, or voting)
+
+### Performance
+- [x] 90+ Lighthouse score (Performance can be <90 if due to Reddit's media)
+- [x] Lazy load images
+- [x] Memoize expensive computations
+- [x] Code splitting for routes
+
+### Testing
+- [x] Unit tests for all components
+- [x] Integration tests for Redux slices
+- [x] E2E tests for critical user flows
+
+### Quality
+- [x] PropTypes for all components
+- [x] Error boundaries for graceful failures
+- [x] Loading states for async operations
+- [x] Empty states when no data available
+
+---
+
+## Common Tasks
+
+### Development
+```bash
+npm start          # Start development server
+npm test           # Run tests in watch mode
+npm run test:ci    # Run all tests once (for CI)
+```
+
+### Building
+```bash
+npm run build      # Production build
+npm run lighthouse # Test performance
+```
+
+### Testing Specific Components
+```bash
+npm test SearchBar           # Test one component
+npm test -- --coverage       # With coverage report
+```
+
+---
+
+## API Integration Notes
+
+### Reddit JSON API
+- Endpoint format: `https://www.reddit.com/r/{subreddit}.json`
+- No authentication needed for read-only access
+- Rate limiting: Be mindful of request frequency
+- Response includes post data, comments available at `{post_url}.json`
+
+### Handling API Data
+```javascript
+// Example post object structure
+{
+  id: 't3_xyz123',
+  title: 'Post title',
+  subreddit: 'technology',
+  author: 'username',
+  created_utc: 1634567890,
+  score: 1234,
+  num_comments: 456,
+  url: 'https://...',
+  selftext: 'Post content...',
+  thumbnail: 'https://...'
+}
+```
+
+---
+
+## When Making Changes
+
+### Before Committing:
+1. Run tests: `npm test`
+2. Check for linting errors
+3. Verify mobile responsiveness
+4. Test keyboard navigation
+5. Update tests if adding features
+
+### When Adding New Features:
+1. Plan component structure first
+2. Add to appropriate Redux slice
+3. Write component tests
+4. Implement component
+5. Add integration tests
+6. Update documentation
+
+---
+
+## Error Handling Strategy
+
+### API Errors
+- Display friendly error messages to users
+- Log errors to console for debugging
+- Provide "retry" functionality
+- Never crash the entire app
+
+### Error Boundaries
+```jsx
+// Wrap main sections in error boundaries
+<ErrorBoundary fallback={<ErrorMessage />}>
+  <PostFeed />
+</ErrorBoundary>
+```
+
+**Why this matters:** Professional apps handle errors gracefully and help users recover from problems.
+
+---
+
+## Notes for Claude Code
+
+### When Generating Code:
+- Always check design tokens before hardcoding values
+- Use semantic HTML elements (nav, main, article, aside)
+- Include ARIA labels for interactive elements
+- Follow the component naming conventions above
+- Organize imports: React → Third-party → Local
+- Keep functions pure when possible
+- Add comments for complex logic only (code should be self-documenting)
+
+### When Creating Components:
+- Start with PropTypes definition
+- Add default props when appropriate
+- Include loading and error states
+- Make components responsive by default
+- Test with empty data
+
+### When Working with Redux:
+- Use createAsyncThunk for API calls
+- Handle all promise states (pending, fulfilled, rejected)
+- Normalize data when storing in state
+- Use selectors for derived data
+- Keep reducers pure (no side effects)
+
+---
+
+## Success Criteria
+
+Your project is successful when:
+1. ✅ All four views work correctly
+2. ✅ Search returns relevant results
+3. ✅ Filters update the displayed posts
+4. ✅ Post detail shows comments properly
+5. ✅ Works on mobile and desktop
+6. ✅ Lighthouse score is 90+ (except media-related performance)
+7. ✅ All tests pass
+8. ✅ No console errors in production
+9. ✅ README is complete with wireframes
+10. ✅ Code is clean, commented, and organized
+
+---
+
+## Additional Resources
+
+- Reddit API Documentation: https://www.reddit.com/dev/api
+- Redux Toolkit Documentation: https://redux-toolkit.js.org
+- React Testing Library: https://testing-library.com/react
+- Tailwind CSS: https://tailwindcss.com
+- Accessibility Guidelines: https://www.w3.org/WAI/WCAG21/quickref
+
+---
+
+## Questions to Ask When Stuck
+
+1. "Does this belong in Redux or local state?"
+   - Global/shared = Redux
+   - UI-only = Local state
+
+2. "Should this be a separate component?"
+   - If used in multiple places = Yes
+   - If more than 50 lines = Probably yes
+   - If it has its own state logic = Yes
+
+3. "How should I structure this test?"
+   - Test behavior, not implementation
+   - Test user interactions
+   - Test error cases
+
+4. "Is this accessible?"
+   - Can I navigate with keyboard?
+   - Do screen readers understand it?
+   - Is color contrast sufficient?
+
+---
+
+Remember: Build one feature at a time, test as you go, and don't hesitate to refactor when you see a better way!
