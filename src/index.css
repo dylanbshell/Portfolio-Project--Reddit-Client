@@ -1,0 +1,203 @@
+:root {
+  /* ========================================
+     COLORS
+     ======================================== */
+
+  /* Background colors */
+  --color-bg-primary: #3b2b26;
+  --color-bg-dark: #171212;
+  --color-bg-transparent: transparent;
+
+  /* Text colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #baa39c;
+
+  /* Border colors */
+  --color-border-primary: #54403b;
+  --color-border-accent: #e5e8eb;
+
+  /* Gradients */
+  --gradient-image-card: linear-gradient(130deg, #171212 55.96%, #413333 116.73%);
+  --gradient-text-card: linear-gradient(154deg, #413333 -83.09%, #171212 57.07%);
+
+  /* Overlay */
+  --color-overlay-modal: rgba(0, 0, 0, 0.6);
+
+  /* ========================================
+     TYPOGRAPHY
+     ======================================== */
+
+  /* Font families */
+  --font-family-primary: 'Spline Sans', sans-serif;
+  --font-family-secondary: 'Inter', sans-serif;
+
+  /* Font sizes */
+  --font-size-xs: 13px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 22px;
+
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Line heights */
+  --line-height-tight: 20px;
+  --line-height-base: 21px;
+  --line-height-relaxed: 23px;
+  --line-height-loose: 24px;
+  --line-height-xl: 28px;
+
+  /* ========================================
+     SPACING
+     ======================================== */
+
+  /* Gap values */
+  --gap-xs: 4px;
+  --gap-sm: 8px;
+  --gap-md: 12px;
+  --gap-base: 16px;
+  --gap-lg: 32px;
+  --gap-xl: 36px;
+  --gap-xxl: 77px;
+
+  /* Padding values */
+  --padding-xs: 6px;
+  --padding-sm: 8px;
+  --padding-md: 12px;
+  --padding-sort: 13px;
+  --padding-base: 16px;
+  --padding-lg: 19px;
+  --padding-xl: 50px;
+  --padding-xxl: 68px;
+
+  /* ========================================
+     BORDERS
+     ======================================== */
+
+  --border-width-thin: 1px;
+  --border-width-thick: 3px;
+
+  /* Border radius */
+  --border-radius-sm: 8px;
+  --border-radius-base: 15px;
+  --border-radius-lg: 20px;
+  --border-radius-md: 21px;
+  --border-radius-pill: 45px;
+
+  /* ========================================
+     EFFECTS
+     ======================================== */
+
+  --box-shadow-soft: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --text-shadow-soft: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  /* ========================================
+     COMPONENT SPECIFIC
+     ======================================== */
+
+  /* Navigation */
+  --nav-height: 65px;
+  --nav-height-compact: 48px;
+
+  /* Sidebar */
+  --sidebar-width: 320px;
+
+  /* Main Feed */
+  --main-feed-width: 908px;
+  --feed-spacer-height: 56px;
+
+  /* Community Items */
+  --community-height: 56px;
+  --community-icon-size: 40px;
+
+  /* Post Cards */
+  --image-post-height: 161px;
+  --text-post-height: 228px;
+
+  /* Modal */
+  --modal-max-width: 960px;
+  --modal-z-index: 1000;
+
+  /* Comments */
+  --comment-icon-size: 40px;
+  --comment-level2-indent: 68px;
+  --comment-level2-indent-mobile: 34px;
+
+  /* ========================================
+     BASE STYLES
+     ======================================== */
+
+  font-family: var(--font-family-primary);
+  line-height: var(--line-height-loose);
+  font-weight: var(--font-weight-normal);
+
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-dark);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   RESET & BASE STYLES
+   ======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
