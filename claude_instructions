@@ -349,6 +349,7 @@ npm test -- --coverage       # With coverage report
 - Organize imports: React → Third-party → Local
 - Keep functions pure when possible
 - Add comments for complex logic only (code should be self-documenting)
+- If you have any questions or need clarification on something that is not sufficiently defined or describe, please ask BEFORE generating the code
 
 ### When Creating Components:
 - Start with PropTypes definition
