@@ -101,11 +101,17 @@ export default {
       height: {
         'nav': '65px',
         'nav-compact': '48px',
+        'community': '56px',
       },
       // Component-specific widths
       width: {
         'sidebar': '320px',
         'main-feed': '908px',
+        'community-icon': '40px',
+      },
+      // Component-specific sizes
+      size: {
+        'community-icon': '40px',
       },
       // Max widths
       maxWidth: {
