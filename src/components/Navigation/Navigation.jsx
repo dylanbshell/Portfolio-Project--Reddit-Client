@@ -12,15 +12,15 @@ import SearchBar from '../SearchBar';
  */
 function Navigation({ compact = false, onSearch }) {
   return (
-    <nav className={`w-full ${compact ? 'h-12' : 'h-[65px] sm:h-14'} bg-transparent flex items-center justify-center px-4 md:px-[19px] lg:px-10 py-3 transition-[height] duration-300 ease`}>
-      <div className="w-full max-w-[1280px] flex items-center justify-between gap-3 md:gap-4 lg:gap-8">
+    <nav className={`w-full ${compact ? 'h-nav-compact' : 'h-nav sm:h-14'} bg-bg-transparent flex items-center justify-center px-base md:px-padding-lg lg:px-10 py-md transition-[height] duration-300 ease`}>
+      <div className="w-full max-w-container flex items-center justify-between gap-md md:gap-base lg:gap-lg">
         {/* Logo Section */}
         <Link
           to="/"
-          className="flex items-center gap-2 text-white no-underline cursor-pointer transition-opacity duration-200 flex-shrink-0 hover:opacity-80"
+          className="flex items-center gap-sm text-text-primary no-underline cursor-pointer transition-opacity duration-200 flex-shrink-0 hover:opacity-80"
         >
           <RedditIcon compact={compact} />
-          <span className={`font-['Spline_Sans',sans-serif] ${compact ? 'text-base sm:text-[13px]' : 'text-sm sm:text-base md:text-lg'} font-bold leading-[23px] text-white hidden xs:inline`}>
+          <span className={`font-primary ${compact ? 'text-base sm:text-xs' : 'text-sm sm:text-base md:text-lg'} font-bold leading-relaxed text-text-primary hidden xs:inline`}>
             Reddit
           </span>
         </Link>
@@ -41,7 +41,7 @@ function Navigation({ compact = false, onSearch }) {
 function RedditIcon({ compact }) {
   return (
     <svg
-      className={`${compact ? 'w-7 h-7 sm:w-5 sm:h-5' : 'w-6 h-6 sm:w-8 sm:h-8'} text-white flex-shrink-0`}
+      className={`${compact ? 'w-7 h-7 sm:w-5 sm:h-5' : 'w-6 h-6 sm:w-8 sm:h-8'} text-text-primary flex-shrink-0`}
       viewBox="0 0 24 24"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"

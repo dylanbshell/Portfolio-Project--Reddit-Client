@@ -10,7 +10,7 @@ const SearchIcon = () => (
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="text-[#baa39c]"
+    className="text-text-secondary"
   >
     <path
       d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
@@ -68,11 +68,11 @@ export default function SearchBar({ onSearch }) {
   return (
     <div className="relative w-40 h-10">
       <form onSubmit={handleSubmit} className="relative w-full h-full">
-        <div className="flex items-stretch h-full rounded-lg overflow-hidden">
+        <div className="flex items-stretch h-full rounded-sm overflow-hidden">
           {/* Search Button */}
           <button
             type="submit"
-            className="flex items-center justify-center bg-[#3b2b26] px-4 rounded-l-lg hover:bg-[#4a3a35] transition-colors"
+            className="flex items-center justify-center bg-bg-primary px-base rounded-l-sm hover:opacity-80 transition-opacity"
             aria-label="Search"
           >
             <SearchIcon />
@@ -87,7 +87,7 @@ export default function SearchBar({ onSearch }) {
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             placeholder="Search"
-            className="flex-1 bg-[#3b2b26] text-white placeholder-[#baa39c] px-2 pr-4 rounded-r-lg outline-none focus:ring-2 focus:ring-[#54403b] font-['Inter'] text-base"
+            className="flex-1 bg-bg-primary text-text-primary placeholder-text-secondary px-sm pr-base rounded-r-sm outline-none focus:ring-2 focus:ring-border-primary font-secondary text-base"
             aria-label="Search input"
           />
         </div>
@@ -95,7 +95,7 @@ export default function SearchBar({ onSearch }) {
 
       {/* Error Message */}
       {errorMessage && (
-        <div className="absolute top-full left-0 mt-2 w-full bg-red-600 text-white text-sm px-3 py-2 rounded shadow-lg z-10">
+        <div className="absolute top-full left-0 mt-sm w-full bg-red-600 text-text-primary text-sm px-md py-sm rounded-sm shadow-soft z-10">
           {errorMessage}
         </div>
       )}
