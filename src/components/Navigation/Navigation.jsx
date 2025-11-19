@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './Navigation.css';
+import SearchBar from '../SearchBar';
 
 /**
  * Navigation Component
@@ -8,24 +8,27 @@ import './Navigation.css';
  * Features adaptive height based on context (standard: 65px, compact: 48px).
  *
  * @param {boolean} compact - If true, uses compact height (48px), otherwise standard (65px)
- * @param {React.ReactNode} searchBar - SearchBar component to be rendered in the nav
+ * @param {function} onSearch - Optional callback function when search is submitted
  */
-function Navigation({ compact = false, searchBar = null }) {
+function Navigation({ compact = false, onSearch }) {
   return (
-    <nav className={`navigation ${compact ? 'navigation--compact' : ''}`}>
-      <div className="navigation__container">
+    <nav className={`w-full ${compact ? 'h-12' : 'h-[65px] sm:h-14'} bg-transparent flex items-center justify-center px-4 md:px-[19px] lg:px-10 py-3 transition-[height] duration-300 ease`}>
+      <div className="w-full max-w-[1280px] flex items-center justify-between gap-3 md:gap-4 lg:gap-8">
         {/* Logo Section */}
-        <Link to="/" className="navigation__logo">
-          <RedditIcon />
-          <span className="navigation__logo-text">Reddit</span>
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-white no-underline cursor-pointer transition-opacity duration-200 flex-shrink-0 hover:opacity-80"
+        >
+          <RedditIcon compact={compact} />
+          <span className={`font-['Spline_Sans',sans-serif] ${compact ? 'text-base sm:text-[13px]' : 'text-sm sm:text-base md:text-lg'} font-bold leading-[23px] text-white hidden xs:inline`}>
+            Reddit
+          </span>
         </Link>
 
-        {/* Search Bar Placeholder */}
-        {searchBar && (
-          <div className="navigation__search">
-            {searchBar}
-          </div>
-        )}
+        {/* Search Bar */}
+        <div className="flex-1 flex justify-end max-w-full sm:max-w-[400px] md:max-w-[600px]">
+          <SearchBar onSearch={onSearch} />
+        </div>
       </div>
     </nav>
   );
@@ -35,10 +38,10 @@ function Navigation({ compact = false, searchBar = null }) {
  * Reddit Icon SVG Component
  * Simple Reddit mascot (Snoo) icon
  */
-function RedditIcon() {
+function RedditIcon({ compact }) {
   return (
     <svg
-      className="navigation__icon"
+      className={`${compact ? 'w-7 h-7 sm:w-5 sm:h-5' : 'w-6 h-6 sm:w-8 sm:h-8'} text-white flex-shrink-0`}
       viewBox="0 0 24 24"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
