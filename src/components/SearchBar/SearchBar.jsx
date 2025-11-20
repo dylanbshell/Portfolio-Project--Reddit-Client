@@ -87,7 +87,7 @@ export default function SearchBar({ onSearch }) {
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             placeholder="Search"
-            className="flex-1 bg-bg-primary text-text-primary placeholder-text-secondary px-2 pr-4 rounded-r-lg outline-none focus:ring-2 focus:ring-border-primary font-secondary text-base leading-6"
+            className="flex-1 bg-bg-primary text-white placeholder-text-secondary px-2 pr-4 rounded-r-lg outline-none focus:ring-2 focus:ring-border-primary font-secondary text-base leading-6"
             aria-label="Search input"
           />
         </div>
@@ -95,7 +95,7 @@ export default function SearchBar({ onSearch }) {
 
       {/* Error Message */}
       {errorMessage && (
-        <div className="absolute top-full left-0 mt-2 w-full bg-red-600 text-text-primary text-sm px-3 py-2 rounded-lg shadow-lg z-10">
+        <div className="absolute top-full left-0 mt-2 w-full bg-red-600 text-white text-sm px-3 py-2 rounded-lg shadow-lg z-10">
           {errorMessage}
         </div>
       )}

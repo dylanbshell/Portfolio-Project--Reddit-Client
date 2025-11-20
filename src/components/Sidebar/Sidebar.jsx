@@ -8,19 +8,20 @@ import {
   selectCommunitiesError
 } from '../../features/communities/communitiesSlice';
 
-// Default community icon SVG (fallback when community doesn't have an icon)
+// Default community icon - Hashtag symbol
 const DefaultCommunityIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="text-text-secondary"
-  >
-    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
-    <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-  </svg>
+  <div className="w-6 h-6 flex items-center justify-center">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="text-white"
+    >
+      <path d="M10 3L8 21M16 3L14 21M4 9H20M3 15H19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  </div>
 );
 
 /**
@@ -34,29 +35,29 @@ function CommunityItem({ community }) {
   return (
     <Link
       to={`/r/${communityName}`}
-      className="flex items-center gap-base h-14 px-base bg-bg-dark hover:bg-bg-primary hover:rounded-md hover:w-[272px] transition-all duration-200 cursor-pointer group"
+      className="flex items-center gap-4 h-14 px-4 bg-bg-dark hover:bg-bg-primary hover:rounded-[21px] hover:w-[272px] transition-all duration-200 cursor-pointer group"
     >
       {/* Community Icon */}
-      <div className="flex items-center justify-center w-10 h-10 bg-bg-primary rounded-sm shrink-0">
+      <div className="flex items-center justify-center w-10 h-10 bg-bg-primary rounded-lg shrink-0">
         {communityIcon ? (
           <img
             src={communityIcon}
             alt={`${communityName} icon`}
-            className="w-6 h-6 rounded-sm object-cover"
+            className="w-6 h-6 rounded-lg object-cover"
             onError={(e) => {
               e.target.style.display = 'none';
-              e.target.nextSibling.style.display = 'block';
+              e.target.nextSibling.style.display = 'flex';
             }}
           />
         ) : null}
-        <div style={{ display: communityIcon ? 'none' : 'block' }}>
+        <div style={{ display: communityIcon ? 'none' : 'flex' }} className="w-full h-full items-center justify-center">
           <DefaultCommunityIcon />
         </div>
       </div>
 
       {/* Community Name */}
       <div className="flex-1 min-w-0">
-        <p className="font-secondary text-base font-normal leading-loose text-text-primary truncate overflow-hidden whitespace-nowrap">
+        <p className="font-secondary text-base font-normal leading-6 text-white truncate overflow-hidden whitespace-nowrap">
           {communityName}
         </p>
       </div>
@@ -82,10 +83,10 @@ export default function Sidebar() {
   }, [dispatch, status]);
 
   return (
-    <aside className="hidden lg:flex flex-col w-sidebar bg-bg-dark overflow-y-auto h-screen sticky top-0">
+    <aside className="hidden lg:flex flex-col w-[320px] bg-bg-dark overflow-y-auto h-screen sticky top-0">
       {/* Sidebar Title */}
-      <div className="px-base pt-base pb-sm shrink-0">
-        <h2 className="font-secondary text-lg font-bold leading-relaxed text-text-primary">
+      <div className="px-4 pt-4 pb-2 shrink-0">
+        <h2 className="font-secondary text-lg font-bold leading-[23px] text-white">
           Communities
         </h2>
       </div>
@@ -93,17 +94,17 @@ export default function Sidebar() {
       {/* Communities List */}
       <div className="flex flex-col">
         {status === 'loading' && (
-          <div className="px-base py-base text-text-secondary text-sm">
+          <div className="px-4 py-4 text-text-secondary text-sm">
             Loading communities...
           </div>
         )}
 
         {status === 'failed' && (
-          <div className="px-base py-base">
-            <p className="text-red-500 text-sm mb-sm">{error}</p>
+          <div className="px-4 py-4">
+            <p className="text-red-500 text-sm mb-2">{error}</p>
             <button
               onClick={() => dispatch(fetchCommunities())}
-              className="text-text-secondary text-sm hover:text-text-primary transition-colors underline"
+              className="text-text-secondary text-sm hover:text-white transition-colors underline"
             >
               Try again
             </button>
@@ -111,7 +112,7 @@ export default function Sidebar() {
         )}
 
         {status === 'succeeded' && communities.length === 0 && (
-          <div className="px-base py-base text-text-secondary text-sm">
+          <div className="px-4 py-4 text-text-secondary text-sm">
             No communities found
           </div>
         )}

@@ -11,16 +11,18 @@ import SearchBar from '../SearchBar';
  */
 function Navigation({ compact = false, onSearch }) {
   return (
-    <nav className="w-full border-b border-[#e5e8eb] flex items-center justify-between px-10 py-3">
+    <nav className="w-full bg-bg-dark border-b border-border-accent flex items-center justify-between px-10 py-3">
       {/* Left side: Logo and Search */}
       <div className="flex items-center gap-8">
         {/* Home/Logo Button */}
         <Link
           to="/"
-          className="flex items-center gap-4 text-text-primary no-underline cursor-pointer hover:opacity-80 transition-opacity"
+          className="flex items-center gap-4 text-white no-underline cursor-pointer hover:opacity-80 transition-opacity"
         >
-          <RedditIcon />
-          <span className="font-primary text-lg font-bold leading-relaxed text-text-primary">
+          <div className="bg-white p-1 rounded flex items-center justify-center">
+            <RedditIcon />
+          </div>
+          <span className="font-primary text-lg font-bold leading-[23px] text-white">
             Reddit
           </span>
         </Link>
@@ -41,7 +43,7 @@ function Navigation({ compact = false, onSearch }) {
 function RedditIcon() {
   return (
     <svg
-      className="w-4 h-4 text-text-primary flex-shrink-0"
+      className="w-4 h-4 text-black flex-shrink-0"
       viewBox="0 0 16 16"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
