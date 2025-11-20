@@ -1,6 +1,48 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Background Colors */
+  --color-bg-primary: #3b2b26;
+  --color-bg-dark: #171212;
+  --color-bg-transparent: transparent;
+
+  /* Text Colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #baa39c;
+
+  /* Border Colors */
+  --color-border-primary: #54403b;
+  --color-border-accent: #e5e8eb;
+
+  /* Font Families */
+  --font-family-primary: 'Spline Sans', sans-serif;
+  --font-family-secondary: 'Inter', sans-serif;
+
+  /* Font Sizes */
+  --font-size-xs: 13px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 22px;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-base: 16px;
+  --spacing-lg: 32px;
+  --spacing-xl: 36px;
+  --spacing-xxl: 77px;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 21px;
+
+  /* Component Sizes */
+  --width-sidebar: 320px;
+  --height-nav: 65px;
+  --height-nav-compact: 48px;
+}
 
 :root {
   /* ========================================

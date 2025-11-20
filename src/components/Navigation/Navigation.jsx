@@ -5,28 +5,28 @@ import SearchBar from '../SearchBar';
  * Navigation Component
  *
  * Main navigation bar for the Reddit Client application.
- * Features adaptive height based on context (standard: 65px, compact: 48px).
  *
  * @param {boolean} compact - If true, uses compact height (48px), otherwise standard (65px)
  * @param {function} onSearch - Optional callback function when search is submitted
  */
 function Navigation({ compact = false, onSearch }) {
   return (
-    <nav className={`w-full ${compact ? 'h-nav-compact' : 'h-nav sm:h-14'} bg-bg-transparent flex items-center justify-center px-base md:px-padding-lg lg:px-10 py-md transition-[height] duration-300 ease`}>
-      <div className="w-full max-w-container flex items-center justify-between gap-md md:gap-base lg:gap-lg">
-        {/* Logo Section */}
+    <nav className="w-full border-b border-[#e5e8eb] flex items-center justify-between px-10 py-3">
+      {/* Left side: Logo and Search */}
+      <div className="flex items-center gap-8">
+        {/* Home/Logo Button */}
         <Link
           to="/"
-          className="flex items-center gap-sm text-text-primary no-underline cursor-pointer transition-opacity duration-200 flex-shrink-0 hover:opacity-80"
+          className="flex items-center gap-4 text-text-primary no-underline cursor-pointer hover:opacity-80 transition-opacity"
         >
-          <RedditIcon compact={compact} />
-          <span className={`font-primary ${compact ? 'text-base sm:text-xs' : 'text-sm sm:text-base md:text-lg'} font-bold leading-relaxed text-text-primary hidden xs:inline`}>
+          <RedditIcon />
+          <span className="font-primary text-lg font-bold leading-relaxed text-text-primary">
             Reddit
           </span>
         </Link>
 
         {/* Search Bar */}
-        <div className="flex-1 flex justify-end max-w-full sm:max-w-[400px] md:max-w-[600px]">
+        <div className="min-w-[160px] max-w-[256px]">
           <SearchBar onSearch={onSearch} />
         </div>
       </div>
@@ -36,22 +36,22 @@ function Navigation({ compact = false, onSearch }) {
 
 /**
  * Reddit Icon SVG Component
- * Simple Reddit mascot (Snoo) icon
+ * Reddit logo icon
  */
-function RedditIcon({ compact }) {
+function RedditIcon() {
   return (
     <svg
-      className={`${compact ? 'w-7 h-7 sm:w-5 sm:h-5' : 'w-6 h-6 sm:w-8 sm:h-8'} text-text-primary flex-shrink-0`}
-      viewBox="0 0 24 24"
+      className="w-4 h-4 text-text-primary flex-shrink-0"
+      viewBox="0 0 16 16"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <circle cx="12" cy="12" r="10" opacity="0.2"/>
-      <circle cx="9" cy="11" r="1.5"/>
-      <circle cx="15" cy="11" r="1.5"/>
-      <path d="M12 16c-2 0-3.5-1-3.5-1s1.5 2 3.5 2 3.5-2 3.5-2-1.5 1-3.5 1z"/>
-      <ellipse cx="12" cy="7" rx="2" ry="1.5"/>
+      <circle cx="8" cy="8" r="7" opacity="0.2"/>
+      <circle cx="6" cy="7" r="1"/>
+      <circle cx="10" cy="7" r="1"/>
+      <path d="M8 11c-1.5 0-2.5-0.7-2.5-0.7s1 1.4 2.5 1.4 2.5-1.4 2.5-1.4-1 0.7-2.5 0.7z"/>
+      <ellipse cx="8" cy="4.5" rx="1.5" ry="1"/>
     </svg>
   );
 }

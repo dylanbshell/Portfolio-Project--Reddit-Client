@@ -66,13 +66,13 @@ export default function SearchBar({ onSearch }) {
   };
 
   return (
-    <div className="relative w-40 h-10">
-      <form onSubmit={handleSubmit} className="relative w-full h-full">
-        <div className="flex items-stretch h-full rounded-sm overflow-hidden">
+    <div className="relative w-full">
+      <form onSubmit={handleSubmit} className="relative w-full">
+        <div className="flex items-stretch h-10 rounded-lg overflow-hidden">
           {/* Search Button */}
           <button
             type="submit"
-            className="flex items-center justify-center bg-bg-primary px-base rounded-l-sm hover:opacity-80 transition-opacity"
+            className="flex items-center justify-center bg-bg-primary px-4 rounded-l-lg hover:opacity-80 transition-opacity"
             aria-label="Search"
           >
             <SearchIcon />
@@ -87,7 +87,7 @@ export default function SearchBar({ onSearch }) {
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             placeholder="Search"
-            className="flex-1 bg-bg-primary text-text-primary placeholder-text-secondary px-sm pr-base rounded-r-sm outline-none focus:ring-2 focus:ring-border-primary font-secondary text-base"
+            className="flex-1 bg-bg-primary text-text-primary placeholder-text-secondary px-2 pr-4 rounded-r-lg outline-none focus:ring-2 focus:ring-border-primary font-secondary text-base leading-6"
             aria-label="Search input"
           />
         </div>
@@ -95,7 +95,7 @@ export default function SearchBar({ onSearch }) {
 
       {/* Error Message */}
       {errorMessage && (
-        <div className="absolute top-full left-0 mt-sm w-full bg-red-600 text-text-primary text-sm px-md py-sm rounded-sm shadow-soft z-10">
+        <div className="absolute top-full left-0 mt-2 w-full bg-red-600 text-text-primary text-sm px-3 py-2 rounded-lg shadow-lg z-10">
           {errorMessage}
         </div>
       )}
