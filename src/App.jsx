@@ -4,10 +4,10 @@ import Navigation from './components/Navigation';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import FilteredView from './pages/FilteredView';
+import PostDetail from './pages/PostDetail';
 
 // Pages will be imported here as they are created
 // import SearchResults from './pages/SearchResults/SearchResults';
-// import PostDetail from './pages/PostDetail/PostDetail';
 
 function App() {
   const handleSearch = (query) => {
@@ -34,10 +34,10 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
               <Route path="/r/:subreddit" element={<FilteredView />} />
+              <Route path="/post/:postId" element={<PostDetail />} />
 
               {/* Future routes */}
               {/* <Route path="/search" element={<SearchResults />} /> */}
-              {/* <Route path="/post/:postId" element={<PostDetail />} /> */}
             </Routes>
           </main>
         </div>
