@@ -1,11 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ImagePostCard, TextPostCard } from '../PostCard';
 import {
   fetchPosts,
+  loadMorePosts,
   selectPosts,
   selectPostsStatus,
-  selectPostsError
+  selectPostsError,
+  selectLoadMoreStatus,
+  selectHasMore,
+  selectAfter
 } from '../../features/posts/postsSlice';
 import { hasValidImage } from '../../utils/redditApi';
 
@@ -18,11 +22,37 @@ export default function PostFeed({ subreddit = 'all', sort = 'best' }) {
   const posts = useSelector(selectPosts);
   const status = useSelector(selectPostsStatus);
   const error = useSelector(selectPostsError);
+  const loadMoreStatus = useSelector(selectLoadMoreStatus);
+  const hasMore = useSelector(selectHasMore);
+  const after = useSelector(selectAfter);
 
   // Fetch posts when component mounts or when subreddit/sort changes
   useEffect(() => {
     dispatch(fetchPosts({ subreddit, sort }));
   }, [dispatch, subreddit, sort]);
+
+  // Infinite scroll handler
+  const handleScroll = useCallback(() => {
+    // Don't load if already loading or no more posts
+    if (loadMoreStatus === 'loading' || !hasMore || status === 'loading') {
+      return;
+    }
+
+    // Check if user is near bottom of page (within 500px)
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollTop = document.documentElement.scrollTop;
+    const clientHeight = document.documentElement.clientHeight;
+
+    if (scrollTop + clientHeight >= scrollHeight - 500) {
+      dispatch(loadMorePosts({ subreddit, sort, after }));
+    }
+  }, [dispatch, subreddit, sort, after, loadMoreStatus, hasMore, status]);
+
+  // Add scroll event listener
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   // Loading state
   if (status === 'loading') {
@@ -77,6 +107,23 @@ export default function PostFeed({ subreddit = 'all', sort = 'best' }) {
           );
         })}
       </div>
+
+      {/* Loading More Indicator */}
+      {loadMoreStatus === 'loading' && (
+        <div className="flex justify-center items-center py-8">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white mb-2 mx-auto"></div>
+            <p className="text-text-secondary text-sm">Loading more posts...</p>
+          </div>
+        </div>
+      )}
+
+      {/* No More Posts Message */}
+      {!hasMore && posts.length > 0 && (
+        <div className="flex justify-center items-center py-8">
+          <p className="text-text-secondary text-sm">You've reached the end!</p>
+        </div>
+      )}
     </div>
   );
 }
