@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { formatCount, getTimeAgo } from '../../utils/formatters';
 
 // Default user icon placeholder
@@ -59,6 +60,8 @@ const DownvoteIcon = () => (
  * Supports nested replies up to 2 levels deep
  */
 export default function CommentCard({ comment, depth = 0 }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   // Extract comment data
   const {
     author,
@@ -75,6 +78,9 @@ export default function CommentCard({ comment, depth = 0 }) {
 
   // Format timestamp
   const timeAgo = getTimeAgo(createdUtc);
+
+  // Check if comment has replies
+  const hasReplies = replies && replies.length > 0;
 
   // Calculate indentation based on depth
   // Level 0: px-8 (32px), Level 1: px-8, Level 2: pl-[68px] (68px left padding)

@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { formatCount, getTimeAgo, calculateVotes } from '../../utils/formatters';
+import { hasValidImage, getPostImageUrl } from '../../utils/redditApi';
 import CommentCard from '../CommentCard';
 
 // Vote icons (same as TextPostCard)
@@ -21,11 +23,32 @@ const CommentIcon = () => (
   </svg>
 );
 
+// Placeholder for missing images
+const PlaceholderImage = () => (
+  <div className="w-full bg-bg-primary rounded-[20px] flex items-center justify-center py-20">
+    <svg
+      width="80"
+      height="80"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="text-text-secondary opacity-30"
+    >
+      <path
+        d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+);
+
 /**
  * PostDetailContent Component
  * Displays the full post content and comments inside a modal
  */
 export default function PostDetailContent({ post, comments, onClose }) {
+  const [imageError, setImageError] = useState(false);
+
   if (!post) return null;
 
   // Extract post data
@@ -49,6 +72,10 @@ export default function PostDetailContent({ post, comments, onClose }) {
 
   // Get subreddit name
   const subredditName = subredditPrefixed || `r/${subreddit}`;
+
+  // Check if post has image
+  const hasImage = hasValidImage(post);
+  const imageUrl = hasImage ? getPostImageUrl(post) : null;
 
   return (
     <div className="bg-bg-dark rounded-[36px] overflow-hidden">
@@ -85,6 +112,22 @@ export default function PostDetailContent({ post, comments, onClose }) {
           {timeAgo}
         </p>
       </div>
+
+      {/* Post Image */}
+      {hasImage && (
+        <div className="px-8 pt-1 pb-3">
+          {imageUrl && !imageError ? (
+            <img
+              src={imageUrl}
+              alt={title}
+              className="w-full rounded-[20px] object-cover"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <PlaceholderImage />
+          )}
+        </div>
+      )}
 
       {/* Post Content */}
       {selftext && (
