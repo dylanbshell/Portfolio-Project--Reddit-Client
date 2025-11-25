@@ -5,15 +5,12 @@ import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import FilteredView from './pages/FilteredView';
 import PostDetail from './pages/PostDetail';
-
-// Pages will be imported here as they are created
-// import SearchResults from './pages/SearchResults/SearchResults';
+import SearchResults from './pages/SearchResults';
 
 function App() {
   const handleSearch = (query) => {
-    console.log('Search query:', query);
-    // TODO: Navigate to search results page
-    // navigate(`/search?q=${query}`);
+    // Navigation is handled by the Navigation component directly
+    // This callback is kept for future use if needed
   };
 
   return (
@@ -35,9 +32,7 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/r/:subreddit" element={<FilteredView />} />
               <Route path="/post/:postId" element={<PostDetail />} />
-
-              {/* Future routes */}
-              {/* <Route path="/search" element={<SearchResults />} /> */}
+              <Route path="/search" element={<SearchResults />} />
             </Routes>
           </main>
         </div>

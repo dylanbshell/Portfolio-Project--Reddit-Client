@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setQuery, selectQuery } from '../../features/search/searchSlice';
 
@@ -23,6 +24,7 @@ const SearchIcon = () => (
 );
 
 export default function SearchBar({ onSearch }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const query = useSelector(selectQuery);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -52,6 +54,9 @@ export default function SearchBar({ onSearch }) {
 
       return;
     }
+
+    // Navigate to search page with query parameter
+    navigate(`/search?q=${encodeURIComponent(query)}`);
 
     // Call the onSearch callback if provided
     if (onSearch) {
