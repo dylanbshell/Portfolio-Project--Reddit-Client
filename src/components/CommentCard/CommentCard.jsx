@@ -83,12 +83,12 @@ export default function CommentCard({ comment, depth = 0 }) {
   const hasReplies = replies && replies.length > 0;
 
   // Calculate indentation based on depth
-  // Level 0: px-8 (32px), Level 1: px-8, Level 2: pl-[68px] (68px left padding)
+  // Level 0: px-8 (32px), Level 1: pl-16 pr-8 (64px left), Level 2: pl-24 pr-8 (96px left)
   const paddingClass = depth === 0
     ? 'px-8'
     : depth === 1
-    ? 'px-8'
-    : 'pl-[68px] pr-8';
+    ? 'pl-16 pr-8'
+    : 'pl-24 pr-8';
 
   return (
     <>
@@ -118,7 +118,7 @@ export default function CommentCard({ comment, depth = 0 }) {
             </p>
           </div>
 
-          {/* Vote Counts */}
+          {/* Vote Counts and Reply Toggle */}
           <div className="flex items-center gap-9 pt-2">
             {/* Upvotes */}
             <div className="flex items-center gap-2">
@@ -135,12 +135,22 @@ export default function CommentCard({ comment, depth = 0 }) {
                 {formatCount(downvotes)}
               </span>
             </div>
+
+            {/* Reply Toggle Button (only show if comment has replies and depth allows nesting) */}
+            {hasReplies && depth < 2 && (
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="font-primary text-sm font-medium leading-[21px] text-text-secondary hover:text-white transition-colors"
+              >
+                {isExpanded ? 'Hide' : 'View'} {replies.length} {replies.length === 1 ? 'reply' : 'replies'}
+              </button>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Nested Replies (only render if depth < 2) */}
-      {depth < 2 && replies && replies.length > 0 && (
+      {/* Nested Replies (only render if expanded and depth < 2) */}
+      {isExpanded && depth < 2 && replies && replies.length > 0 && (
         <div>
           {replies.map((reply, index) => (
             <CommentCard
@@ -154,7 +164,7 @@ export default function CommentCard({ comment, depth = 0 }) {
 
       {/* Show indicator for hidden deeper replies */}
       {depth === 1 && comment.moreRepliesCount && comment.moreRepliesCount > 0 && (
-        <div className="pl-[68px] pr-8 py-2">
+        <div className="pl-24 pr-8 py-2">
           <p className="text-text-secondary text-sm italic">
             {comment.moreRepliesCount} more {comment.moreRepliesCount === 1 ? 'reply' : 'replies'}...
           </p>
