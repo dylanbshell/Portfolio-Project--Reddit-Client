@@ -384,31 +384,31 @@ export function hasValidImage(post) {
  * @returns {string|null}
  */
 export function getPostImageUrl(post) {
-  // Try to get high-quality image from preview
+  // First priority: Direct URL for image posts (highest quality, no conversion)
+  if (post.url && /\.(jpg|jpeg|png|gif|webp)$/i.test(post.url)) {
+    return post.url;
+  }
+
+  // Second priority: Try to get image from preview (for Reddit-hosted images without file extension in URL)
   if (post.preview && post.preview.images && post.preview.images.length > 0) {
     const image = post.preview.images[0];
 
-    // Get the highest resolution available
+    // Prefer the full resolution source image
+    if (image.source && image.source.url) {
+      return image.source.url.replace(/&amp;/g, '&');
+    }
+
+    // Fallback to highest resolution thumbnail if source unavailable
     if (image.resolutions && image.resolutions.length > 0) {
       const highRes = image.resolutions[image.resolutions.length - 1];
       return highRes.url.replace(/&amp;/g, '&'); // Decode HTML entities
     }
-
-    // Fallback to source
-    if (image.source && image.source.url) {
-      return image.source.url.replace(/&amp;/g, '&');
-    }
   }
 
-  // Fallback to thumbnail if valid
+  // Last resort: Fallback to thumbnail if valid
   const invalidThumbnails = ['self', 'default', 'nsfw', 'spoiler', ''];
   if (post.thumbnail && !invalidThumbnails.includes(post.thumbnail)) {
     return post.thumbnail;
-  }
-
-  // Try the URL directly if it's an image
-  if (post.url && /\.(jpg|jpeg|png|gif|webp)$/i.test(post.url)) {
-    return post.url;
   }
 
   return null;
